@@ -1,6 +1,14 @@
-import sys, time
+from genericpath import isdir
+import os, sys, time
 from picamera import PiCamera
 from time import sleep
+
+try:
+    if not(os.path.isdir('./pic')):
+        os.makedirs(os.path.join('./pic'))
+except OSError:
+    print("Failed to create directory!")
+
 
 if len(sys.argv) != 2:
     pic_num = 1
